@@ -26,7 +26,6 @@ function createRotateController() {
       x: e.pageX,
       y: e.pageY,
     };
-    // THIS IS THE CALCULATION THAT HAS CHANGED
     const delta = {
       x: ((currentPosition.x - initialPosition.x) / window.innerWidth) * 360,
       y: ((initialPosition.y - currentPosition.y) / window.innerHeight) * 360,
