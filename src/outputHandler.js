@@ -8,11 +8,11 @@ const cachedDOM = createDOMCache();
 
 function createRotateController() {
   let dragging = false;
-  let delta = {};
+  let initialPosition = {};
 
   function initDragRotate(e) {
     dragging = true;
-    delta = {
+    initialPosition = {
       x: e.pageX,
       y: e.pageY,
     };
@@ -22,9 +22,15 @@ function createRotateController() {
     if (!dragging) {
       return;
     }
+    const currentPosition = {
+      x: e.pageX,
+      y: e.pageY,
+    };
     // THIS IS THE CALCULATION THAT HAS CHANGED
-    delta.x = (e.pageX / window.innerWidth) * 360; // - delta.x;
-    delta.y = (e.pageY / window.innerHeight) * 360; // - delta.y;
+    const delta = {
+      x: ((currentPosition.x - initialPosition.x) / window.innerWidth) * 360,
+      y: ((initialPosition.y - currentPosition.y) / window.innerHeight) * 360,
+    };
 
     let rotateParam = "";
     rotateParam += ` rotateY(${delta.x}deg)`;
