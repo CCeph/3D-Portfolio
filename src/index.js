@@ -1,4 +1,5 @@
 import "./style.css";
+import "./outputHandler";
 
 console.log("Webpack, ESLint, and Prettier Template");
 

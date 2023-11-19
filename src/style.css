@@ -1,9 +1,31 @@
+/* Defaults */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+fieldset,
+input,
+legend,
+select,
+textarea {
+  appearance: none;
+}
+
+/* End of Defaults */
+
 .container {
-  width: 500px;
-  height: 500px;
+  width: 100vw;
+  height: 100vh;
   background-color: aliceblue;
   margin: auto;
   perspective: 600px;
+  overflow: hidden;
 }
 
 .box {
@@ -26,6 +48,7 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.2);
   color: white;
+  user-select: none;
 }
 
 .box-face.front {
