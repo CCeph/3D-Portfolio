@@ -10,8 +10,11 @@ const cachedDOM = createDOMCache();
 function getInitialBoxRotation() {
   const rootElement = cachedDOM.$root;
   const rootStyles = getComputedStyle(rootElement);
-  const x = rootStyles.getPropertyValue("--initialRotateX");
-  const y = rootStyles.getPropertyValue("--initialRotateY");
+  const xString = rootStyles.getPropertyValue("--initialRotateX");
+  const yString = rootStyles.getPropertyValue("--initialRotateY");
+  const x = Number(xString.replace(/[^0-9]/g, ""));
+  const y = Number(yString.replace(/[^0-9]/g, ""));
+  console.log(typeof x);
   return { x, y };
 }
 
@@ -42,8 +45,8 @@ function createRotateController() {
     };
 
     let rotateParam = "";
-    rotateParam += ` rotateY(${delta.x}deg)`;
-    rotateParam += ` rotateX(${delta.y}deg)`;
+    rotateParam += ` rotateY(${delta.x + initialRotation.x}deg)`;
+    rotateParam += ` rotateX(${delta.y + initialRotation.y}deg)`;
     cachedDOM.$box.style.transform = rotateParam;
   }
 
