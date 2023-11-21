@@ -19,6 +19,11 @@ textarea {
 
 /* End of Defaults */
 
+:root {
+  --initialRotateX: 30deg;
+  --initialRotateY: 50deg;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
@@ -36,7 +41,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: rotateX(30deg) rotateY(50deg);
+  transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY));
 }
 
 .box-face {

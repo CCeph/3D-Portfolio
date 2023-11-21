@@ -1,14 +1,24 @@
 function createDOMCache() {
   const $container = document.querySelector("[data-container]");
   const $box = document.querySelector("[data-box]");
-  return { $container, $box };
+  const $root = document.querySelector(":root");
+  return { $container, $box, $root };
 }
 
 const cachedDOM = createDOMCache();
 
+function getInitialBoxRotation() {
+  const rootElement = cachedDOM.$root;
+  const rootStyles = getComputedStyle(rootElement);
+  const x = rootStyles.getPropertyValue("--initialRotateX");
+  const y = rootStyles.getPropertyValue("--initialRotateY");
+  return { x, y };
+}
+
 function createRotateController() {
   let dragging = false;
   let initialPosition = {};
+  const initialRotation = getInitialBoxRotation();
 
   function initDragRotate(e) {
     dragging = true;
