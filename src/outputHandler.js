@@ -12,16 +12,15 @@ function getInitialBoxRotation() {
   const rootStyles = getComputedStyle(rootElement);
   const xString = rootStyles.getPropertyValue("--initialRotateX");
   const yString = rootStyles.getPropertyValue("--initialRotateY");
-  const x = Number(xString.replace(/[^0-9]/g, ""));
-  const y = Number(yString.replace(/[^0-9]/g, ""));
-  console.log(typeof x);
+  const x = Number(xString.slice(0, -3));
+  const y = Number(yString.slice(0, -3));
   return { x, y };
 }
 
 function createRotateController() {
   let dragging = false;
   let initialPosition = {};
-  const initialRotation = getInitialBoxRotation();
+  let initialRotation = null;
 
   function initDragRotate(e) {
     dragging = true;
@@ -29,6 +28,7 @@ function createRotateController() {
       x: e.pageX,
       y: e.pageY,
     };
+    initialRotation = getInitialBoxRotation();
   }
 
   function dragRotate(e) {
@@ -44,9 +44,19 @@ function createRotateController() {
       y: ((initialPosition.y - currentPosition.y) / window.innerHeight) * 360,
     };
 
+    const rootElement = cachedDOM.$root;
+    rootElement.style.setProperty(
+      "--initialRotateX",
+      `${delta.y + initialRotation.x}deg`
+    );
+    rootElement.style.setProperty(
+      "--initialRotateY",
+      `${delta.x + initialRotation.y}deg`
+    );
+
     let rotateParam = "";
-    rotateParam += ` rotateY(${delta.x + initialRotation.x}deg)`;
-    rotateParam += ` rotateX(${delta.y + initialRotation.y}deg)`;
+    rotateParam += ` rotateX(${delta.y + initialRotation.x}deg)`;
+    rotateParam += ` rotateY(${delta.x + initialRotation.y}deg)`;
     cachedDOM.$box.style.transform = rotateParam;
   }
 

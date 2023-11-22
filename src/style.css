@@ -20,8 +20,8 @@ textarea {
 /* End of Defaults */
 
 :root {
-  --initialRotateX: 30deg;
-  --initialRotateY: 50deg;
+  --initialRotateX: -15deg;
+  --initialRotateY: -37deg;
 }
 
 .container {
