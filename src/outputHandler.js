@@ -7,20 +7,20 @@ function createDOMCache() {
 
 const cachedDOM = createDOMCache();
 
-function getInitialBoxRotation() {
-  const rootElement = cachedDOM.$root;
-  const rootStyles = getComputedStyle(rootElement);
-  const xString = rootStyles.getPropertyValue("--initialRotateX");
-  const yString = rootStyles.getPropertyValue("--initialRotateY");
-  const x = Number(xString.slice(0, -3));
-  const y = Number(yString.slice(0, -3));
-  return { x, y };
-}
-
-function createRotateController() {
+function createRotateController(root, container, cube) {
   let dragging = false;
   let initialPosition = {};
   let initialRotation = null;
+
+  function getInitialBoxRotation() {
+    const rootElement = root;
+    const rootStyles = getComputedStyle(rootElement);
+    const xString = rootStyles.getPropertyValue("--initialRotateX");
+    const yString = rootStyles.getPropertyValue("--initialRotateY");
+    const rotX = Number(xString.slice(0, -3));
+    const rotY = Number(yString.slice(0, -3));
+    return { rotX, rotY };
+  }
 
   function initDragRotate(e) {
     dragging = true;
@@ -44,20 +44,21 @@ function createRotateController() {
       y: ((initialPosition.y - currentPosition.y) / window.innerHeight) * 360,
     };
 
-    const rootElement = cachedDOM.$root;
+    const rootElement = root;
     rootElement.style.setProperty(
       "--initialRotateX",
-      `${delta.y + initialRotation.x}deg`
+      `${delta.y + initialRotation.rotX}deg`
     );
     rootElement.style.setProperty(
       "--initialRotateY",
-      `${delta.x + initialRotation.y}deg`
+      `${delta.x + initialRotation.rotY}deg`
     );
 
     let rotateParam = "";
-    rotateParam += ` rotateX(${delta.y + initialRotation.x}deg)`;
-    rotateParam += ` rotateY(${delta.x + initialRotation.y}deg)`;
-    cachedDOM.$box.style.transform = rotateParam;
+    rotateParam += ` rotateX(${delta.y + initialRotation.rotX}deg)`;
+    rotateParam += ` rotateY(${delta.x + initialRotation.rotY}deg)`;
+    const cubeElement = cube;
+    cubeElement.style.transform = rotateParam;
   }
 
   function endDragRotate() {
@@ -68,6 +69,12 @@ function createRotateController() {
     dragging = false;
   }
 
+  container.addEventListener("mousedown", initDragRotate);
+
+  container.addEventListener("mousemove", dragRotate);
+
+  container.addEventListener("mouseup", endDragRotate);
+
   return {
     initDragRotate,
     dragRotate,
@@ -75,19 +82,8 @@ function createRotateController() {
   };
 }
 
-const mainBoxRotateController = createRotateController();
-
-cachedDOM.$container.addEventListener(
-  "mousedown",
-  mainBoxRotateController.initDragRotate
-);
-
-cachedDOM.$container.addEventListener(
-  "mousemove",
-  mainBoxRotateController.dragRotate
-);
-
-cachedDOM.$container.addEventListener(
-  "mouseup",
-  mainBoxRotateController.endDragRotate
+const mainBoxRotateController = createRotateController(
+  cachedDOM.$root,
+  cachedDOM.$container,
+  cachedDOM.$box
 );
