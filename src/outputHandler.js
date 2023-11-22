@@ -10,7 +10,7 @@ const cachedDOM = createDOMCache();
 function createRotateController(root, container, cube) {
   let dragging = false;
   let initialPosition = {};
-  let initialRotation = null;
+  let initialRotation = {};
 
   function getInitialBoxRotation() {
     const rootElement = root;
