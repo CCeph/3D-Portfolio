@@ -51,7 +51,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0);
   color: white;
   user-select: none;
 }
@@ -59,18 +59,45 @@ textarea {
 .box-face.front {
   transform: rotateY(0deg) translateZ(100px);
 }
+.box-face.frontRear {
+  transform: rotateY(0deg) translateZ(99px);
+}
+
 .box-face.right {
   transform: rotateY(90deg) translateZ(100px);
 }
+.box-face.rightRear {
+  transform: rotateY(90deg) translateZ(99px);
+}
+
 .box-face.back {
   transform: rotateY(180deg) translateZ(100px);
 }
+.box-face.backRear {
+  transform: rotateY(180deg) translateZ(99px);
+}
+
 .box-face.left {
   transform: rotateY(-90deg) translateZ(100px);
 }
+.box-face.leftRear {
+  transform: rotateY(-90deg) translateZ(99px);
+}
+
 .box-face.top {
   transform: rotateX(90deg) translateZ(100px);
 }
+.box-face.topRear {
+  transform: rotateX(90deg) translateZ(99px);
+}
+
 .box-face.bottom {
   transform: rotateX(-90deg) translateZ(100px);
+}
+.box-face.bottomRear {
+  transform: rotateX(-90deg) translateZ(99px);
+}
+
+.box-face.rear {
+  border: 1px solid silver;
 }
