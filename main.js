@@ -16,7 +16,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ checkTestingWorks)\n/* harmony export */ });\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _outputHandler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./outputHandler */ \"./src/outputHandler.js\");\n/* harmony import */ var _outputHandler__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_outputHandler__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconsole.log(\"Webpack, ESLint, and Prettier Template\");\nfunction checkTestingWorks(a, b) {\n  return a + b;\n}\n\n//# sourceURL=webpack://webpack_eslint_prettier_template/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ checkTestingWorks)\n/* harmony export */ });\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _outputHandler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./outputHandler */ \"./src/outputHandler.js\");\n/* harmony import */ var _outputHandler__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_outputHandler__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction checkTestingWorks(a, b) {\n  return a + b;\n}\n\n//# sourceURL=webpack://webpack_eslint_prettier_template/./src/index.js?");
 
 /***/ }),
 
