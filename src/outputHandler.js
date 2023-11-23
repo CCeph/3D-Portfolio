@@ -2,7 +2,10 @@ function createDOMCache() {
   const $container = document.querySelector("[data-container]");
   const $box = document.querySelector("[data-box]");
   const $root = document.querySelector(":root");
-  return { $container, $box, $root };
+  const $homeFace = document.querySelector("[data-home-face]");
+  const $projectsFace = document.querySelector("[data-projects-face]");
+  const $aboutFace = document.querySelector("[data-about-face]");
+  return { $container, $box, $root, $homeFace, $projectsFace, $aboutFace };
 }
 
 const cachedDOM = createDOMCache();
@@ -96,3 +99,19 @@ const mainBoxRotateController = createRotateController(
   "--initialRotateX",
   "--initialRotateY"
 );
+
+function createNavListeners() {
+  cachedDOM.$homeFace.addEventListener("dblclick", () => {
+    console.log("Home");
+  });
+
+  cachedDOM.$projectsFace.addEventListener("dblclick", () => {
+    console.log("Projects");
+  });
+
+  cachedDOM.$aboutFace.addEventListener("dblclick", () => {
+    console.log("About");
+  });
+}
+
+createNavListeners();
