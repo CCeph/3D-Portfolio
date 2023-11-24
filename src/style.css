@@ -24,6 +24,9 @@ textarea {
   --initialRotateY: -37deg;
   --defaultBoxTranslations: translateZ(100px) translateY(-100px)
     translateX(-100px);
+  --rotateDuration: 1s;
+  --openingDuration: 1s;
+  --zoomDuration: 1s;
 }
 
 .container {
@@ -50,13 +53,23 @@ textarea {
   0% {
   }
 
-  100% {
+  34% {
     transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  67% {
+    transform: rotate(0deg) translateZ(0px);
+  }
+
+  100% {
+    transform: rotateZ(180deg) translateZ(500px);
   }
 }
 
 .box.homeActive {
-  animation: rotateToFace 1s ease-in-out 0s 1 normal forwards;
+  animation: rotateToFace
+    calc(var(--rotateDuration) + var(--rotateDuration) + var(--zoomDuration))
+    ease-in-out 0s 1 normal forwards;
 }
 
 .box-face {
@@ -77,6 +90,23 @@ textarea {
 }
 .box .frontRear {
   transform: translateZ(-1px);
+}
+
+@keyframes slideOpen {
+  0% {
+    transform: var(--defaultBoxTranslations);
+  }
+
+  50% {
+    transform: var(--defaultBoxTranslations) translateY(50px);
+  }
+
+  100% {
+    transform: var(--defaultBoxTranslations) translateY(100vh);
+  }
+}
+.frontFace.open {
+  animation: slideOpen 1s ease-in-out var(--rotateDuration) 1 normal forwards;
 }
 
 .box .rightFace {

@@ -3,6 +3,7 @@ function createDOMCache() {
   const $box = document.querySelector("[data-box]");
   const $root = document.querySelector(":root");
   const $homeFace = document.querySelector("[data-home-face]");
+  const $homeGroup = document.querySelector("[data-home-group]");
   const $projectsFace = document.querySelector("[data-projects-face]");
   const $aboutFace = document.querySelector("[data-about-face]");
   const $contactFace = document.querySelector("[data-contact-face]");
@@ -11,6 +12,7 @@ function createDOMCache() {
     $box,
     $root,
     $homeFace,
+    $homeGroup,
     $projectsFace,
     $aboutFace,
     $contactFace,
@@ -126,6 +128,7 @@ function createNavListeners() {
   cachedDOM.$homeFace.addEventListener("dblclick", () => {
     removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
     cachedDOM.$box.classList.add("homeActive");
+    cachedDOM.$homeGroup.classList.add("open");
   });
 
   cachedDOM.$projectsFace.addEventListener("dblclick", () => {
