@@ -22,6 +22,8 @@ textarea {
 :root {
   --initialRotateX: -15deg;
   --initialRotateY: -37deg;
+  --defaultBoxTranslations: translateZ(100px) translateY(-100px)
+    translateX(-100px);
 }
 
 .container {
@@ -69,46 +71,52 @@ textarea {
   user-select: none;
 }
 
-.box-face.front {
-  transform: rotateY(0deg) translateZ(100px);
+.box .frontFace {
+  transform: rotateY(0deg) var(--defaultBoxTranslations);
+  transform-style: preserve-3d;
 }
-.box-face.frontRear {
-  transform: rotateY(0deg) translateZ(99px);
-}
-
-.box-face.right {
-  transform: rotateY(90deg) translateZ(100px);
-}
-.box-face.rightRear {
-  transform: rotateY(90deg) translateZ(99px);
+.box .frontRear {
+  transform: translateZ(-1px);
 }
 
-.box-face.back {
-  transform: rotateY(180deg) translateZ(100px);
+.box .rightFace {
+  transform: rotateY(90deg) var(--defaultBoxTranslations);
+  transform-style: preserve-3d;
 }
-.box-face.backRear {
-  transform: rotateY(180deg) translateZ(99px);
-}
-
-.box-face.left {
-  transform: rotateY(-90deg) translateZ(100px);
-}
-.box-face.leftRear {
-  transform: rotateY(-90deg) translateZ(99px);
+.box .rightRear {
+  transform: translateZ(-1px);
 }
 
-.box-face.top {
-  transform: rotateX(90deg) translateZ(100px);
+.box .backFace {
+  transform: rotateY(180deg) var(--defaultBoxTranslations);
+  transform-style: preserve-3d;
 }
-.box-face.topRear {
-  transform: rotateX(90deg) translateZ(99px);
+.box .backRear {
+  transform: translateZ(-1px);
 }
 
-.box-face.bottom {
-  transform: rotateX(-90deg) translateZ(100px);
+.box .leftFace {
+  transform: rotateY(-90deg) var(--defaultBoxTranslations);
+  transform-style: preserve-3d;
 }
-.box-face.bottomRear {
-  transform: rotateX(-90deg) translateZ(99px);
+.box .leftRear {
+  transform: translateZ(-1px);
+}
+
+.box .topFace {
+  transform: rotateX(90deg) var(--defaultBoxTranslations);
+  transform-style: preserve-3d;
+}
+.box .topRear {
+  transform: translateZ(-1px);
+}
+
+.box .bottomFace {
+  transform: rotateX(-90deg) var(--defaultBoxTranslations);
+  transform-style: preserve-3d;
+}
+.box .bottomRear {
+  transform: translateZ(-1px);
 }
 
 .box-face.rear {
