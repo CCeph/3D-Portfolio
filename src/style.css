@@ -44,6 +44,19 @@ textarea {
   transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY));
 }
 
+@keyframes rotateToFace {
+  0% {
+  }
+
+  100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+}
+
+.box.homeActive {
+  animation: rotateToFace 1s ease-in-out 0s 1 normal forwards;
+}
+
 .box-face {
   position: absolute;
   width: 200px;

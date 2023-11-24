@@ -109,9 +109,23 @@ const mainBoxRotateController = createRotateController(
   "--initialRotateY"
 );
 
+function removeClassesFromElement(classNameArray, element) {
+  classNameArray.forEach((className) => {
+    element.classList.remove(className);
+  });
+}
+
 function createNavListeners() {
+  const additionalClassesArray = [
+    "homeActive",
+    "projectsActive",
+    "aboutActive",
+    "contactActive",
+  ];
+
   cachedDOM.$homeFace.addEventListener("dblclick", () => {
-    console.log("Home");
+    removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
+    cachedDOM.$box.classList.add("homeActive");
   });
 
   cachedDOM.$projectsFace.addEventListener("dblclick", () => {
