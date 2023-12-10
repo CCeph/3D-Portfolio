@@ -31,6 +31,13 @@ textarea {
   --themeColor: black;
   --foregroundColor: rgba(0, 0, 0, 0);
   --introSubtitleLength: 355px;
+  --introMessageTypingHoldTime: 2s;
+  --introMessageTypingTime: 1.5s;
+  --introMessageHideStart: 1s;
+  --introMessageFadeHoldTime: calc(
+    var(--introMessageTypingHoldTime) + var(--introMessageTypingTime) + 1s
+  );
+  --introMessageFadeTime: 1s;
 }
 
 /* Start of intro message styling */
@@ -47,7 +54,8 @@ textarea {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  animation: hideIntro 1s ease-in 4.5s 1 normal forwards;
+  animation: hideIntro var(--introMessageFadeTime) ease-in
+    var(--introMessageFadeHoldTime) 1 normal forwards;
 }
 
 @keyframes hideIntro {
@@ -73,11 +81,13 @@ textarea {
 
 .intro-subtitle {
   width: 0;
-  animation: typing 1.5s steps(24) 2s forwards,
-    blink 0.5s step-end infinite alternate;
+  animation: typing var(--introMessageTypingTime) steps(24)
+      var(--introMessageTypingHoldTime) forwards,
+    blink 0.5s step-end 3 alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
+  outline: 0;
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
 }
@@ -90,7 +100,7 @@ textarea {
 
 @keyframes blink {
   50% {
-    border-color: transparent;
+    border-right-color: transparent;
   }
 }
 
@@ -115,6 +125,12 @@ textarea {
   align-items: center;
   transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
     translateY(-1000px);
+}
+
+@keyframes boxIntro {
+  100% {
+    transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY));
+  }
 }
 
 @keyframes rotateToFace {

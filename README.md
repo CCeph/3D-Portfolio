@@ -9,3 +9,7 @@ This website couples as my portfolio and my attempt at a new style of navigation
 1. I have not coded keyboard support yet.
 2. I have not coded screen reader support yet.
 3. To prevent undesired clicks on faces when moving the cube, I had to use double click as the event to access one of the cube's faces. Double click is a rare and unfamiliar input method on websites.
+
+## To-Do List
+
+1. Fix the outline on the intro message
