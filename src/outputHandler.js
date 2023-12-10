@@ -158,9 +158,21 @@ function createNavListeners() {
     console.log("Contact");
   });
 
-  cachedDOM.$box.addEventListener("animationend", showNavMessage, {
-    once: true,
-  });
+  cachedDOM.$box.addEventListener(
+    "animationend",
+    () => {
+      showNavMessage();
+
+      /* The following style element sets the box's default coordinates. If the user does
+      not drag the box before double clicking a page, these will be the starting coordinates
+      for rotating the box. */
+      cachedDOM.$box.style.transform =
+        "rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))";
+    },
+    {
+      once: true,
+    }
+  );
 }
 
 createNavListeners();
