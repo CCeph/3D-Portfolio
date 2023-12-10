@@ -124,10 +124,44 @@ textarea {
   justify-content: center;
   align-items: center;
   transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
-    translateY(-1000px);
+    translateY(-1000px) rotateZ(349deg);
+
+  animation: boxIntro 2s ease-in
+    calc(var(--introMessageFadeHoldTime) + var(--introMessageFadeTime) + 0.5s) 1
+    normal forwards;
 }
 
 @keyframes boxIntro {
+  50% {
+    transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
+      rotateZ(-11deg);
+  }
+
+  55% {
+    transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
+      rotateZ(0deg);
+  }
+
+  65% {
+    transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
+      rotateZ(10deg) translateY(-50px);
+  }
+
+  67% {
+    transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
+      rotateZ(10deg) translateY(-50px);
+  }
+
+  80% {
+    transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
+      rotateZ(6deg) translateY(0px);
+  }
+
+  85% {
+    transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
+      rotateZ(0deg) translateY(0px);
+  }
+
   100% {
     transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY));
   }
