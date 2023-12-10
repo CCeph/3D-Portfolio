@@ -38,6 +38,10 @@ textarea {
     var(--introMessageTypingHoldTime) + var(--introMessageTypingTime) + 1s
   );
   --introMessageFadeTime: 1s;
+  --introBoxHoldTime: calc(
+    var(--introMessageFadeHoldTime) + var(--introMessageFadeTime) + 0.5s
+  );
+  --introNavHoldTime: calc(var(--introBoxHoldTime) + 2s);
 }
 
 /* Start of intro message styling */
@@ -106,6 +110,31 @@ textarea {
 
 /* End of intro message styling */
 
+/* Start of nav message styling */
+
+.nav-message {
+  position: absolute;
+  top: 10%;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--themeColor);
+  color: var(--textColor);
+  font-family: Arial, Helvetica, sans-serif;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+
+  animation: showText 1s ease-in var(--introNavHoldTime) 1 normal forwards;
+}
+
+@keyframes showText {
+  100% {
+    opacity: 1;
+  }
+}
+
+/* End of nav message styling */
+
 .container {
   width: 100vw;
   height: 100vh;
@@ -127,8 +156,7 @@ textarea {
     translateY(-1000px) rotateZ(349deg);
 
   animation: boxIntro 2s cubic-bezier(0.43, 1.72, 1, 1.02)
-    calc(var(--introMessageFadeHoldTime) + var(--introMessageFadeTime) + 0.5s) 1
-    normal forwards;
+    var(--introBoxHoldTime) 1 normal forwards;
 }
 
 @keyframes boxIntro {
