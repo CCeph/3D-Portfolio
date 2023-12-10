@@ -123,13 +123,28 @@ textarea {
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-
-  animation: showText 1s ease-in var(--introNavHoldTime) 1 normal forwards;
+  pointer-events: none;
 }
 
-@keyframes showText {
-  100% {
+.nav-message.active {
+  opacity: 1;
+  pointer-events: all;
+  animation: hideText 1s ease-in 0s 1 reverse backwards;
+}
+
+.nav-message.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s;
+}
+
+@keyframes hideText {
+  0% {
     opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 

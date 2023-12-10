@@ -7,6 +7,7 @@ function createDOMCache() {
   const $projectsFace = document.querySelector("[data-projects-face]");
   const $aboutFace = document.querySelector("[data-about-face]");
   const $contactFace = document.querySelector("[data-contact-face]");
+  const $navMessage = document.querySelector("[data-nav-message]");
   return {
     $container,
     $box,
@@ -16,6 +17,7 @@ function createDOMCache() {
     $projectsFace,
     $aboutFace,
     $contactFace,
+    $navMessage,
   };
 }
 
@@ -111,6 +113,18 @@ const mainBoxRotateController = createRotateController(
   "--initialRotateY"
 );
 
+function showNavMessage() {
+  const { $navMessage } = cachedDOM;
+  $navMessage.classList.remove("hide");
+  $navMessage.classList.add("active");
+}
+
+function hideNavMessage() {
+  const { $navMessage } = cachedDOM;
+  $navMessage.classList.remove("active");
+  $navMessage.classList.add("hide");
+}
+
 function removeClassesFromElement(classNameArray, element) {
   classNameArray.forEach((className) => {
     element.classList.remove(className);
@@ -129,6 +143,7 @@ function createNavListeners() {
     removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
     cachedDOM.$box.classList.add("homeActive");
     cachedDOM.$homeGroup.classList.add("open");
+    hideNavMessage();
   });
 
   cachedDOM.$projectsFace.addEventListener("dblclick", () => {
@@ -141,6 +156,10 @@ function createNavListeners() {
 
   cachedDOM.$contactFace.addEventListener("dblclick", () => {
     console.log("Contact");
+  });
+
+  cachedDOM.$box.addEventListener("animationend", showNavMessage, {
+    once: true,
   });
 }
 
