@@ -27,12 +27,15 @@ textarea {
   --rotateDuration: 1s;
   --openingDuration: 1s;
   --zoomDuration: 1s;
+  --textColor: white;
+  --themeColor: black;
+  --foregroundColor: rgba(0, 0, 0, 0);
 }
 
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: aliceblue;
+  background-color: var(--themeColor);
   margin: auto;
   perspective: 600px;
   overflow: hidden;
@@ -79,8 +82,8 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0);
-  color: white;
+  background-color: var(--foregroundColor);
+  color: var(--textColor);
   user-select: none;
 }
 
@@ -151,4 +154,5 @@ textarea {
 
 .box-face.rear {
   border: 1px solid silver;
+  background-color: #181818;
 }
