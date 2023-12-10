@@ -13,3 +13,4 @@ This website couples as my portfolio and my attempt at a new style of navigation
 ## To-Do List
 
 1. Fix the outline on the intro message
+2. Hide nav text when a page is opened.
