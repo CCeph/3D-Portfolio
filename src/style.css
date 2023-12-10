@@ -30,7 +30,71 @@ textarea {
   --textColor: white;
   --themeColor: black;
   --foregroundColor: rgba(0, 0, 0, 0);
+  --introSubtitleLength: 355px;
 }
+
+/* Start of intro message styling */
+
+.intro-message {
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  width: var(--introSubtitleLength);
+  background-color: var(--themeColor);
+  color: var(--textColor);
+  font-family: Arial, Helvetica, sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: hideIntro 1s ease-in 4.5s 1 normal forwards;
+}
+
+@keyframes hideIntro {
+  0% {
+    opacity: 100%;
+  }
+
+  99% {
+    opacity: 0%;
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -1000px);
+  }
+}
+
+.typing-wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.intro-subtitle {
+  width: 0;
+  animation: typing 1.5s steps(24) 2s forwards,
+    blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+}
+
+@keyframes typing {
+  to {
+    width: var(--introSubtitleLength);
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* End of intro message styling */
 
 .container {
   width: 100vw;
@@ -49,7 +113,8 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY));
+  transform: rotateX(var(--initialRotateX)) rotateY(var(--initialRotateY))
+    translateY(-1000px);
 }
 
 @keyframes rotateToFace {
