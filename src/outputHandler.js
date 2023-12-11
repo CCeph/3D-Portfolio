@@ -2,9 +2,10 @@ function createDOMCache() {
   const $container = document.querySelector("[data-container]");
   const $box = document.querySelector("[data-box]");
   const $root = document.querySelector(":root");
-  const $homeFace = document.querySelector("[data-home-face]");
-  const $homeGroup = document.querySelector("[data-home-group]");
+  const $educationFace = document.querySelector("[data-education-face]");
+  const $educationGroup = document.querySelector("[data-education-group]");
   const $projectsFace = document.querySelector("[data-projects-face]");
+  const $projectsGroup = document.querySelector("[data-projects-group]");
   const $aboutFace = document.querySelector("[data-about-face]");
   const $contactFace = document.querySelector("[data-contact-face]");
   const $navMessage = document.querySelector("[data-nav-message]");
@@ -12,9 +13,10 @@ function createDOMCache() {
     $container,
     $box,
     $root,
-    $homeFace,
-    $homeGroup,
+    $educationFace,
+    $educationGroup,
     $projectsFace,
+    $projectsGroup,
     $aboutFace,
     $contactFace,
     $navMessage,
@@ -133,16 +135,16 @@ function removeClassesFromElement(classNameArray, element) {
 
 function createNavListeners() {
   const additionalClassesArray = [
-    "homeActive",
     "projectsActive",
+    "educationActive",
     "aboutActive",
     "contactActive",
   ];
 
-  cachedDOM.$homeFace.addEventListener("dblclick", () => {
+  cachedDOM.$projectsFace.addEventListener("dblclick", () => {
     removeClassesFromElement(additionalClassesArray, cachedDOM.$box);
-    cachedDOM.$box.classList.add("homeActive");
-    cachedDOM.$homeGroup.classList.add("open");
+    cachedDOM.$box.classList.add("projectsActive");
+    cachedDOM.$projectsGroup.classList.add("open");
     hideNavMessage();
   });
 
