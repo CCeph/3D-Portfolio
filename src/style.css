@@ -284,3 +284,11 @@ textarea {
   border: 1px solid silver;
   background-color: #181818;
 }
+
+/* Start of Projects page styling */
+
+.projects-page {
+  height: 100vh;
+}
+
+/* End of Projects page styling */
