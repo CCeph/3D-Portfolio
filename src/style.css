@@ -292,5 +292,28 @@ textarea {
 .page {
   height: 100vh;
   background-color: black;
+  color: white;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.header {
+  font-family: var(--titleFont);
+  text-align: center;
+  padding: 50px;
+}
+
+.main {
+  font-family: var(--titleFont);
+}
+
+.project-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 3fr;
+}
+
+.project-section > img {
+  grid-area: 1 / 1 / 3 / 2;
 }
 /* End of Projects page styling */
