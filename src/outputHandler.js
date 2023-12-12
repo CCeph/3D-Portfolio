@@ -9,6 +9,7 @@ function createDOMCache() {
   const $aboutFace = document.querySelector("[data-about-face]");
   const $contactFace = document.querySelector("[data-contact-face]");
   const $navMessage = document.querySelector("[data-nav-message]");
+  const $projectsPage = document.querySelector("[data-projects-page]");
   return {
     $container,
     $box,
@@ -20,6 +21,7 @@ function createDOMCache() {
     $aboutFace,
     $contactFace,
     $navMessage,
+    $projectsPage,
   };
 }
 
@@ -127,6 +129,18 @@ function hideNavMessage() {
   $navMessage.classList.add("hide");
 }
 
+function showProjectsPage() {
+  const { $projectsPage } = cachedDOM;
+  $projectsPage.classList.remove("hide");
+  $projectsPage.classList.add("active");
+}
+
+function hideProjectsPage() {
+  const { $projectsPage } = cachedDOM;
+  $projectsPage.classList.remove("active");
+  $projectsPage.classList.add("hide");
+}
+
 function removeClassesFromElement(classNameArray, element) {
   classNameArray.forEach((className) => {
     element.classList.remove(className);
@@ -146,6 +160,7 @@ function createNavListeners() {
     cachedDOM.$box.classList.add("projectsActive");
     cachedDOM.$projectsGroup.classList.add("open");
     hideNavMessage();
+    showProjectsPage();
   });
 
   cachedDOM.$projectsFace.addEventListener("dblclick", () => {
