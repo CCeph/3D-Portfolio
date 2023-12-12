@@ -213,6 +213,7 @@ textarea {
   background-color: var(--foregroundColor);
   color: var(--textColor);
   user-select: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .box .frontFace {
@@ -287,8 +288,8 @@ textarea {
 
 /* Start of Projects page styling */
 
-.projects-page {
+.page {
   height: 100vh;
+  background-color: black;
 }
-
 /* End of Projects page styling */
