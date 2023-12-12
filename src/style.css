@@ -42,6 +42,7 @@ textarea {
     var(--introMessageFadeHoldTime) + var(--introMessageFadeTime) + 0.5s
   );
   --introNavHoldTime: calc(var(--introBoxHoldTime) + 2s);
+  --titleFont: Arial, Helvetica, sans-serif;
 }
 
 /* Start of intro message styling */
@@ -53,7 +54,7 @@ textarea {
   width: var(--introSubtitleLength);
   background-color: var(--themeColor);
   color: var(--textColor);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--titleFont);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -119,7 +120,7 @@ textarea {
   text-align: center;
   background-color: var(--themeColor);
   color: var(--textColor);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--titleFont);
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -213,7 +214,7 @@ textarea {
   background-color: var(--foregroundColor);
   color: var(--textColor);
   user-select: none;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--titleFont);
 }
 
 .box .frontFace {
